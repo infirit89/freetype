@@ -91,7 +91,19 @@ if (HarfBuzz_INCLUDE_DIR AND NOT HarfBuzz_VERSION)
 endif ()
 
 if ("${HarfBuzz_FIND_VERSION}" VERSION_GREATER "${HarfBuzz_VERSION}")
-    message(FATAL_ERROR "Required version (" ${HarfBuzz_FIND_VERSION} ") is higher than found version (" ${HarfBuzz_VERSION} ")")
+  if (HarfBuzz_FIND_REQUIRED)
+    message(FATAL_ERROR
+      "Required version (" ${HarfBuzz_FIND_VERSION} ")"
+      " is higher than found version (" ${HarfBuzz_VERSION} ")")
+  else ()
+    message(WARNING
+      "Required version (" ${HarfBuzz_FIND_VERSION} ")"
+      " is higher than found version (" ${HarfBuzz_VERSION} ")")
+    unset(HarfBuzz_VERSION)
+    unset(HarfBuzz_INCLUDE_DIRS)
+    unset(HarfBuzz_LIBRARIES)
+    return ()
+  endif ()
 endif ()
 
 # Find components
