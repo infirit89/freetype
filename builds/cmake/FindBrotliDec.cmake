@@ -19,7 +19,7 @@
 #   BROTLIDEC_INCLUDE_DIRS
 #   BROTLIDEC_LIBRARIES
 
-find_package(PkgConfig)
+find_package(PkgConfig QUIET)
 
 pkg_check_modules(PC_BROTLIDEC QUIET libbrotlidec)
 
