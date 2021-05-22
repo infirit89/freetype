@@ -1,6 +1,10 @@
 project "Freetype"
     kind "SharedLib"
     language "C"
+    staticruntime "on"
+
+    targetdir ("%{prj.location}/bin/" .. outputdir)
+    objdir ("%{prj.location}/bin-int/" .. outputdir)
 
     files 
     {
