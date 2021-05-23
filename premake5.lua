@@ -1,75 +1,69 @@
 project "Freetype"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C"
     staticruntime "on"
 
-    targetdir ("%{prj.location}/bin/" .. outputdir)
-    objdir ("%{prj.location}/bin-int/" .. outputdir)
-
     includedirs 
-    {
-        "include"
+    { 
+        "include" 
     }
-
+    
     files 
-    {
-        "freetype/src/autofit/autofit.c",
-        "freetype/src/bdf/bdf.c",
-        "freetype/src/cff/cff.c",
-        "freetype/src/base/ftbase.c",
-        "freetype/src/base/ftbitmap.c",
-        "freetype/src/cache/ftcache.c",
-        "freetype/src/base/ftfstype.c",
-        "freetype/src/base/ftgasp.c",
-        "freetype/src/base/ftglyph.c",
-        "freetype/src/gzip/ftgzip.c",
-        "freetype/src/base/ftinit.c",
-        "freetype/src/lzw/ftlzw.c",
-        "freetype/src/base/ftstroke.c",
-        "freetype/src/base/ftsystem.c",
-        "freetype/src/smooth/smooth.c",
-        "freetype/src/base/ftbbox.c",
-        "freetype/src/base/ftmm.c",
-        "freetype/src/base/ftpfr.c",
-        "freetype/src/base/ftsynth.c",
-        "freetype/src/base/fttype1.c",
-        "freetype/src/base/ftwinfnt.c",
-        "freetype/src/base/ftlcdfil.c",
-        "freetype/src/base/ftgxval.c",
-        "freetype/src/base/ftotval.c",
-        "freetype/src/base/ftpatent.c",
-        "freetype/src/pcf/pcf.c",
-        "freetype/src/pfr/pfr.c",
-        "freetype/src/psaux/psaux.c",
-        "freetype/src/pshinter/pshinter.c",
-        "freetype/src/psnames/psmodule.c",
-        "freetype/src/raster/raster.c",
-        "freetype/src/sfnt/sfnt.c",
-        "freetype/src/truetype/truetype.c",
-        "freetype/src/type1/type1.c",
-        "freetype/src/cid/type1cid.c",
-        "freetype/src/type42/type42.c",
-        "freetype/src/winfonts/winfnt.c", 
+    { 
+        "src/autofit/autofit.c",
+        "src/base/ftbase.c",
+        "src/base/ftbbox.c",
+        "src/base/ftbdf.c",
+        "src/base/ftbitmap.c",
+        "src/base/ftcid.c",
+        "src/base/ftfstype.c",
+        "src/base/ftgasp.c",
+        "src/base/ftglyph.c",
+        "src/base/ftgxval.c",
+        "src/base/ftinit.c",
+        "src/base/ftmm.c",
+        "src/base/ftotval.c",
+        "src/base/ftpatent.c",
+        "src/base/ftpfr.c",
+        "src/base/ftstroke.c",
+        "src/base/ftsynth.c",
+        "src/base/ftsystem.c",
+        "src/base/fttype1.c",
+        "src/base/ftwinfnt.c",
+        "src/bdf/bdf.c",
+        "src/cache/ftcache.c",
+        "src/cff/cff.c",
+        "src/cid/type1cid.c",
+        "src/gzip/ftgzip.c",
+        "src/lzw/ftlzw.c",
+        "src/pcf/pcf.c",
+        "src/pfr/pfr.c",
+        "src/psaux/psaux.c",
+        "src/pshinter/pshinter.c",
+        "src/psnames/psmodule.c",
+        "src/raster/raster.c",
+        "src/sfnt/sfnt.c",
+        "src/smooth/smooth.c",
+        "src/truetype/truetype.c",
+        "src/type1/type1.c",
+        "src/type42/type42.c",
+        "src/winfonts/winfnt.c" 
     }
 
     defines 
-    {
-        "WIN32",
-        "WIN32_LEAN_AND_MEAN",
-        "VC_EXTRALEAN",
-        "_CRT_SECURE_NO_WARNINGS",
-        "FT2_BUILD_LIBRARY",    
+    { 
+        "FT2_BUILD_LIBRARY" 
     }
-
+    
     filter "system:windows"
-        systemversion "latest"
-
-        files 
-        {
-            "builds/windows/ftdebug.c"
-        }
-
-
+    systemversion "latest"
+    
+    files 
+    {
+        "builds/windows/ftdebug.c"
+    }
+    
+    
     filter "configurations:Debug"
         defines 
         {
@@ -80,7 +74,7 @@ project "Freetype"
         runtime "Debug"
         symbols "on"
       
-      configuration "configurations:Release"
+      filter "configurations:Release"
         defines
         {
             "NDEBUG"
@@ -88,8 +82,3 @@ project "Freetype"
         
         runtime "Release"
         optimize "on"
-
-
-
-
-    
