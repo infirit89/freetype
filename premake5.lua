@@ -47,7 +47,9 @@ project "Freetype"
         "src/truetype/truetype.c",
         "src/type1/type1.c",
         "src/type42/type42.c",
-        "src/winfonts/winfnt.c" 
+        "src/winfonts/winfnt.c",
+        "src/sdf/sdf.c"
+
     }
 
     defines 
