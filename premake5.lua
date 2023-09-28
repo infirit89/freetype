@@ -67,7 +67,13 @@ project "Freetype"
         "FT2_BUILD_LIBRARY",
         "_CRT_SECURE_NO_WARNINGS"
     }
-    
+
+	disablewarnings 
+	{
+		4244,
+		4267
+	}
+
     filter "system:windows"
     systemversion "latest"
     
