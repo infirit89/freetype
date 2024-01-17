@@ -1,7 +1,7 @@
 project "Freetype"
     kind "StaticLib"
     language "C"
-    staticruntime "on"
+    staticruntime "off"
 
 	architecture "x86_64"
 
