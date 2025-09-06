@@ -3,12 +3,10 @@ project "Freetype"
     language "C"
     staticruntime "off"
 
-	architecture "x86_64"
-
     targetdir ("%{prj.location}/bin/" .. outputdir)
     objdir ("%{prj.location}/bin-int/" .. outputdir)
 
-    files 
+    files
     { 
         "include/ft2build.h",
 		"include/freetype/*.h",
@@ -55,34 +53,41 @@ project "Freetype"
 		"src/truetype/truetype.c",
 		"src/type1/type1.c",
 		"src/type42/type42.c",
-		"src/winfonts/winfnt.c"
-
+		"src/winfonts/winfnt.c",
+		"src/svg/svg.c",
+		"src/svg/ftsvg.c",
+		"src/svg/ftsvg.h",
+		"src/svg/svgtypes.h"
     }
 
-    includedirs 
-    { 
-        "include" 
+    includedirs
+    {
+        "include"
     }
 
-    defines 
-    { 
+    defines
+    {
         "FT2_BUILD_LIBRARY",
         "_CRT_SECURE_NO_WARNINGS"
     }
 
-	disablewarnings 
-	{
-		4244,
-		4267
-	}
-
     filter "system:windows"
-    systemversion "latest"
-    
+		architecture "x86_64"
+    	systemversion "latest"
+
+		disablewarnings
+		{
+			4244,
+			4267
+		}
+
+	filter "system:macosx"
+		architecture "ARM64"
+
     filter "configurations:Debug"
         runtime "Debug"
         symbols "on"
-      
+
       filter "configurations:Release"
         runtime "Release"
         optimize "on"
